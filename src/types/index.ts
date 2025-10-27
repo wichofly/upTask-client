@@ -7,6 +7,7 @@ export const ProjectSchema = z.object({
   clientName: z.string(),
   description: z.string(),
 });
+
 // Type for Project based on the schema
 export type Project = z.infer<typeof ProjectSchema>;
 
