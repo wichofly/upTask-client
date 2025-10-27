@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import ProjectForm from '../../components/projects/ProjectForm';
 import type { ProjectFormData } from '../../types';
-import { createProject } from '../../components/ProjectAPI';
+import { createProject } from '../../api/ProjectAPI';
 
 export const CreateProjectView = () => {
   const initialValues: ProjectFormData = {
