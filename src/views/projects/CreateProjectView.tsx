@@ -21,7 +21,7 @@ export const CreateProjectView = () => {
 
   const navigate = useNavigate();
 
-  const mutation = useMutation({
+  const { mutate } = useMutation({
     mutationFn: createProject,
     onSuccess: (data) => {
       toast.success(data);
@@ -30,9 +30,7 @@ export const CreateProjectView = () => {
     onError: () => {},
   });
 
-  const handleForm = (formData: ProjectFormData) => {
-    mutation.mutate(formData);
-  };
+  const handleForm = (formData: ProjectFormData) => mutate(formData);
 
   return (
     <>
