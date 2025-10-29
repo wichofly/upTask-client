@@ -27,7 +27,9 @@ export const CreateProjectView = () => {
       toast.success(data);
       navigate('/');
     },
-    onError: () => {},
+    onError: (error) => {
+      toast.error(error.message);
+    },
   });
 
   const handleForm = (formData: ProjectFormData) => mutate(formData);
