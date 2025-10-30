@@ -16,5 +16,5 @@ export const EditProjectView = () => {
   if (isLoading) return <p className="text-2xl text-center">Loading...</p>;
   if (isError) return <Navigate to="/404" />;
 
-  if (data) return <EditProjectForm />;
+  if (data) return <EditProjectForm data={data} />;
 };
