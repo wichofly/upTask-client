@@ -65,7 +65,7 @@ export const ProjectsCreated = ({ projects }: ProjectsCreatedProps) => {
                   </MenuItem>
                   <MenuItem>
                     <Link
-                      to={``}
+                      to={`/projects/${project._id}/edit`}
                       className="block px-3 py-1 text-sm leading-6 text-gray-900"
                     >
                       Edit Project
