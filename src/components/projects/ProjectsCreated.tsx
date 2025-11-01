@@ -9,12 +9,28 @@ import {
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
 import type { Project } from '../../types';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { deleteProject } from '../../api/ProjectAPI';
+import { toast } from 'react-toastify';
 
 type ProjectsCreatedProps = {
   projects: Project[];
 };
 
 export const ProjectsCreated = ({ projects }: ProjectsCreatedProps) => {
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationFn: deleteProject,
+    onSuccess: (data) => {
+      toast.success(data);
+      queryClient.invalidateQueries({ queryKey: ['projects'] });
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
   return (
     <ul
       role="list"
@@ -34,7 +50,7 @@ export const ProjectsCreated = ({ projects }: ProjectsCreatedProps) => {
                 {project.projectName}
               </Link>
               <p className="text-sm text-gray-400">
-                CLient: {project.clientName}
+                Client: {project.clientName}
               </p>
               <p className="text-sm text-gray-400">{project.description}</p>
             </div>
@@ -75,7 +91,9 @@ export const ProjectsCreated = ({ projects }: ProjectsCreatedProps) => {
                     <button
                       type="button"
                       className="block px-3 py-1 text-sm leading-6 text-red-500 cursor-pointer"
-                      onClick={() => {}}
+                      onClick={() => {
+                        mutate(project._id);
+                      }}
                     >
                       Delete Project
                     </button>

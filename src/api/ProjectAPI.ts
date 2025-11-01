@@ -47,9 +47,23 @@ type ProjectAPIType = {
   projectId: Project['_id'];
 };
 
-export const updateProject = async ({ formData, projectId }: ProjectAPIType) => {
+export const updateProject = async ({
+  formData,
+  projectId,
+}: ProjectAPIType) => {
   try {
     const { data } = await api.put<string>(`/projects/${projectId}`, formData);
+    return data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.error);
+    }
+  }
+};
+
+export const deleteProject = async (id: Project['_id']) => {
+  try {
+    const { data } = await api.delete<string>(`/projects/${id}`);
     return data;
   } catch (error) {
     if (isAxiosError(error) && error.response) {
