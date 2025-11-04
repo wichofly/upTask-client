@@ -31,8 +31,8 @@ export const EditProjectForm = ({ data, projectId }: EditProjectFormProps) => {
   const { mutate } = useMutation({
     mutationFn: updateProject,
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['projects'] });
-      queryClient.invalidateQueries({ queryKey: ['editProject', projectId] });
+      queryClient.invalidateQueries({ queryKey: ['projects'] }); // Invalidate the projects list cache
+      queryClient.invalidateQueries({ queryKey: ['editProject', projectId] }); // Invalidate the specific project cache
       toast.success(data);
       navigate('/');
     },
