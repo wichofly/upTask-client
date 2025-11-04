@@ -5,7 +5,7 @@ import { EditProjectForm } from '../../components/projects/EditProjectForm';
 
 export const EditProjectView = () => {
   const params = useParams();
-  const projectId = params.projectId!; // ! = to assert that projectId is defined
+  const projectId = params.projectId!; // ! = to assert that projectId is defined just as a string.
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['editProject', projectId],
