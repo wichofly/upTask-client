@@ -7,6 +7,9 @@ import {
   DialogTitle,
 } from '@headlessui/react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import type { TaskFormData } from '../../types';
+import TaskForm from './TaskForm';
 
 export default function AddTaskModal() {
   const navigate = useNavigate();
@@ -14,6 +17,18 @@ export default function AddTaskModal() {
   const queryParams = new URLSearchParams(location.search);
   const modalTask = queryParams.get('newTask');
   const show = modalTask ? true : false;
+
+  const initialValues: TaskFormData = { name: '', description: '' };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ defaultValues: initialValues });
+
+  const handleCreateTask = (formData: TaskFormData) => {
+    console.log(formData);
+  };
 
   return (
     <>
@@ -55,6 +70,20 @@ export default function AddTaskModal() {
                     Fill out the form and create {''}
                     <span className="text-fuchsia-600">a task</span>
                   </p>
+
+                  <form
+                    onSubmit={handleSubmit(handleCreateTask)}
+                    className="mt-10 space-y-3.5"
+                    noValidate
+                  >
+                    <TaskForm register={register} errors={errors} />
+
+                    <input
+                      type="submit"
+                      value="Save Task"
+                      className="bg-fuchsia-600 w-full p-3 text-white rounded-md uppercase font-semibold hover:bg-fuchsia-700 transition-colors cursor-pointer"
+                    />
+                  </form>
                 </DialogPanel>
               </TransitionChild>
             </div>
