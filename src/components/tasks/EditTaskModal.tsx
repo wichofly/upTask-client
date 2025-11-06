@@ -6,10 +6,11 @@ import {
   Transition,
   TransitionChild,
 } from '@headlessui/react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export const EditTaskModal = () => {
   const navigate = useNavigate();
+  const location = useLocation()
 
   return (
     <Transition appear show={true} as={Fragment}>
