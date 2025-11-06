@@ -53,7 +53,6 @@ export default function AddTaskModal() {
 
   const handleCreateTask = (formData: TaskFormData) => {
     const data = { formData, projectId };
-    console.log(data);
     mutate(data);
   };
 

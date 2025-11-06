@@ -40,8 +40,6 @@ export const TaskList = ({ tasks }: TaskListProps) => {
     return { ...acc, [task.status]: currentGroup };
   }, initialStatusGroups);
 
-  console.log(groupedTasks);
-
   return (
     <>
       <h1 className="text-5xl font-semibold my-10">Tasks List</h1>
