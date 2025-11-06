@@ -4,12 +4,12 @@ import type { Project, TaskFormData } from '../types';
 
 type TaskAPIType = {
   formData: TaskFormData;
-  id: Project['_id'];
+  projectId: Project['_id'];
 };
 
-export const createTask = async ({ formData, id }: TaskAPIType) => {
+export const createTask = async ({ formData, projectId }: TaskAPIType) => {
   try {
-    const { data } = await api.post<string>(`/projects/${id}/tasks`, formData);
+    const { data } = await api.post<string>(`/projects/${projectId}/tasks`, formData);
     console.log(data);
     return data;
   } catch (error) {

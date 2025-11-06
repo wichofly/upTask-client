@@ -6,10 +6,13 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import type { TaskFormData } from '../../types';
 import TaskForm from './TaskForm';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
+import { createTask } from '../../api/TaskAPI';
+import type { TaskFormData } from '../../types';
 
 export default function AddTaskModal() {
   const navigate = useNavigate();
@@ -18,16 +21,35 @@ export default function AddTaskModal() {
   const modalTask = queryParams.get('newTask');
   const show = modalTask ? true : false;
 
+  // Get project ID from params
+  const params = useParams();
+  const projectId = params.projectId!;
+
   const initialValues: TaskFormData = { name: '', description: '' };
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
+  const { mutate } = useMutation({
+    mutationFn: createTask,
+    onSuccess: (data) => {
+      toast.success(data);
+      reset();
+      navigate(location.pathname, { replace: true });
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
   const handleCreateTask = (formData: TaskFormData) => {
-    console.log(formData);
+    const data = { formData, projectId };
+    console.log(data);
+    mutate(data);
   };
 
   return (
