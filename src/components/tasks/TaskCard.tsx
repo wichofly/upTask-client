@@ -8,12 +8,15 @@ import {
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
 import type { Task } from '../../types';
+import { useNavigate } from 'react-router-dom';
 
 type TaskCardProps = {
   task: Task;
 };
 
 export const TaskCard = ({ task }: TaskCardProps) => {
+  const navigate = useNavigate();
+
   return (
     <li className="p-5 bg-white border border-slate-300 flex justify-between gap-3 rounded-md">
       <div className="min-w-0 flex flex-col gap-y-4">
@@ -52,6 +55,9 @@ export const TaskCard = ({ task }: TaskCardProps) => {
               </MenuItem>
               <MenuItem>
                 <button
+                  onClick={() =>
+                    navigate(location.pathname + `?editTaskId=${task._id}`)
+                  }
                   type="button"
                   className="block px-3 py-1 text-sm leading-6 text-gray-900"
                 >
