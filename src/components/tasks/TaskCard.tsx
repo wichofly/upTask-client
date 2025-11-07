@@ -56,7 +56,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
               <MenuItem>
                 <button
                   onClick={() =>
-                    navigate(location.pathname + `?editTaskId=${task._id}`)
+                    navigate(location.pathname + `?editTask=${task._id}`)
                   }
                   type="button"
                   className="block px-3 py-1 text-sm leading-6 text-gray-900"
