@@ -7,10 +7,30 @@ import {
   TransitionChild,
 } from '@headlessui/react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import type { Task, TaskFormData } from '../../types';
+import { useForm } from 'react-hook-form';
+import TaskForm from './TaskForm';
 
-export const EditTaskModal = () => {
+type EditTaskModalProps = {
+  data: Task;
+};
+
+export const EditTaskModal = ({ data }: EditTaskModalProps) => {
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
+
+  const {
+    register,
+    handleSubmit,
+    // reset,
+    formState: { errors },
+  } = useForm<TaskFormData>({
+    defaultValues: { name: data.name, description: data.description },
+  });
+
+  const handleEditTask = (formData: TaskFormData) => {
+    console.log(formData);
+  };
 
   return (
     <Transition appear show={true} as={Fragment}>
@@ -52,7 +72,13 @@ export const EditTaskModal = () => {
                   <span className="text-fuchsia-600">this form</span>
                 </p>
 
-                <form className="mt-10 space-y-3" noValidate>
+                <form
+                  onSubmit={handleSubmit(handleEditTask)}
+                  className="mt-10 space-y-3"
+                  noValidate
+                >
+                  <TaskForm register={register} errors={errors} />
+
                   <input
                     type="submit"
                     className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-black  text-xl cursor-pointer rounded-md"
