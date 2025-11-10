@@ -31,7 +31,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
 
       <div className="flex shrink-0 gap-x-6">
         <Menu as="div" className="relative flex-none">
-          <MenuButton className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900">
+          <MenuButton className="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900 cursor-pointer">
             <span className="sr-only">options</span>
             <EllipsisVerticalIcon className="h-9 w-9" aria-hidden="true" />
           </MenuButton>
@@ -48,7 +48,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
               <MenuItem>
                 <button
                   type="button"
-                  className="block px-3 py-1 text-sm leading-6 text-gray-900"
+                  className="block px-3 py-1 text-sm leading-6 text-gray-900 cursor-pointer"
                 >
                   View Task
                 </button>
@@ -59,7 +59,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
                     navigate(location.pathname + `?editTask=${task._id}`)
                   }
                   type="button"
-                  className="block px-3 py-1 text-sm leading-6 text-gray-900"
+                  className="block px-3 py-1 text-sm leading-6 text-gray-900 cursor-pointer"
                 >
                   Edit Task
                 </button>
@@ -68,7 +68,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
               <MenuItem>
                 <button
                   type="button"
-                  className="block px-3 py-1 text-sm leading-6 text-red-500"
+                  className="block px-3 py-1 text-sm leading-6 text-red-500 cursor-pointer"
                 >
                   Delete Task
                 </button>
