@@ -11,7 +11,7 @@ export const ProjectDetailsView = () => {
   const navigate = useNavigate();
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['projectDetails', projectId],
+    queryKey: ['editProject', projectId],
     queryFn: () => getProjectById(projectId),
     retry: false,
   });
