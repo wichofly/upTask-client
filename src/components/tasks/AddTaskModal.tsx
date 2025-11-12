@@ -43,7 +43,7 @@ export default function AddTaskModal() {
       reset();
       navigate(location.pathname, { replace: true });
       queryClient.invalidateQueries({
-        queryKey: ['editProject', projectId],
+        queryKey: ['project', projectId],
       });
     },
     onError: (error) => {

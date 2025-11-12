@@ -40,7 +40,7 @@ export const EditTaskModal = ({ data, taskId }: EditTaskModalProps) => {
   const { mutate } = useMutation({
     mutationFn: updateTask,
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['editProject', projectId] });
+      queryClient.invalidateQueries({ queryKey: ['project', projectId] });
       queryClient.invalidateQueries({ queryKey: ['task', taskId] });
       toast.success(data);
       reset();

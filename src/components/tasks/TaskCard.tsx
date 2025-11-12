@@ -29,7 +29,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
     mutationFn: deleteTask,
     onSuccess: (data) => {
       toast.success(data);
-      queryClient.invalidateQueries({ queryKey: ['editProject', projectId] });
+      queryClient.invalidateQueries({ queryKey: ['project', projectId] });
     },
     onError: (error) => {
       toast.error(error.message);
