@@ -16,6 +16,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getTaskById } from '../../api/TaskAPI';
 import { toast } from 'react-toastify';
 import { formatData } from '../../utils/utils';
+import { statusTexts } from '../../locales/status';
 
 export default function TaskModalDetails() {
   const params = useParams();
@@ -92,7 +93,16 @@ export default function TaskModalDetails() {
                     </p>
                     <div className="my-5 space-y-3">
                       <label className="font-bold">Current Status:</label>
-                      <p>{data.status}</p>
+                      <select
+                        className="w-full p-3 bg-white border border-gray-300 rounded-md"
+                        defaultValue={data.status}
+                      >
+                        {Object.entries(statusTexts).map(([key, value]) => (
+                          <option key={key} value={key}>
+                            {value}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </DialogPanel>
                 </TransitionChild>
