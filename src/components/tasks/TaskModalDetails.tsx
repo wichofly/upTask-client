@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, type ChangeEvent } from 'react';
 import {
   Dialog,
   DialogPanel,
@@ -12,11 +12,12 @@ import {
   useNavigate,
   useParams,
 } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { getTaskById } from '../../api/TaskAPI';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { getTaskById, updateStatus } from '../../api/TaskAPI';
 import { toast } from 'react-toastify';
 import { formatData } from '../../utils/utils';
 import { statusTexts } from '../../locales/status';
+import type { TaskStatus } from '../../types';
 
 export default function TaskModalDetails() {
   const params = useParams();
@@ -35,6 +36,25 @@ export default function TaskModalDetails() {
     enabled: !!taskId,
     retry: false,
   });
+
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationFn: updateStatus,
+    onSuccess: (data) => {
+      toast.success(data);
+      queryClient.invalidateQueries({ queryKey: ['project', projectId] });
+      queryClient.invalidateQueries({ queryKey: ['task', taskId] });
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
+  const handleStatusChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const status = e.target.value as TaskStatus;
+    mutate({ projectId, taskId, status });
+  };
 
   if (isError) {
     toast.error(error.message, { toastId: 'error' });
@@ -96,6 +116,7 @@ export default function TaskModalDetails() {
                       <select
                         className="w-full p-3 bg-white border border-gray-300 rounded-md"
                         defaultValue={data.status}
+                        onChange={handleStatusChange}
                       >
                         {Object.entries(statusTexts).map(([key, value]) => (
                           <option key={key} value={key}>
