@@ -1,0 +1,89 @@
+import { useForm } from 'react-hook-form';
+import type { UserLoginForm } from '../../types';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import { Link } from 'react-router-dom';
+
+export const LoginView = () => {
+  const initialValues: UserLoginForm = {
+    email: '',
+    password: '',
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: initialValues,
+  });
+
+  const handleLogin = (formData: UserLoginForm) => {};
+
+  return (
+    <>
+      <form
+        onSubmit={handleSubmit(handleLogin)}
+        className="space-y-8 p-10 bg-white rounded-md"
+        noValidate
+      >
+        <div className="flex flex-col gap-2">
+          <label htmlFor="email" className="font-normal text-2xl">
+            Email
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            placeholder="your-email@domain.com"
+            className="w-full p-3 border border-gray-300 rounded-md"
+            {...register('email', {
+              required: 'Email is required',
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: 'Invalid email address',
+              },
+            })}
+          />
+
+          {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="password" className="font-normal text-2xl">
+            Password
+          </label>
+
+          <input
+            id="password"
+            type="password"
+            placeholder="Your password"
+            className="w-full p-3 border border-gray-300 rounded-md"
+            {...register('password', {
+              required: 'Password is required',
+            })}
+          />
+
+          {errors.password && (
+            <ErrorMessage>{errors.password.message}</ErrorMessage>
+          )}
+        </div>
+
+        <input
+          type="submit"
+          value="Login"
+          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-semibold text-xl cursor-pointer rounded-md"
+        />
+
+        <nav>
+          Don't have an account?{' '}
+          <Link
+            to="/auth/register"
+            className="text-fuchsia-600 hover:underline"
+          >
+            Register here
+          </Link>
+        </nav>
+      </form>
+    </>
+  );
+};
