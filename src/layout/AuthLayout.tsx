@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { Logo } from '../components/Logo';
 
 export const AuthLayout = () => {
@@ -12,6 +13,7 @@ export const AuthLayout = () => {
           </div>
         </div>
       </div>
+      <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
     </>
   );
 };

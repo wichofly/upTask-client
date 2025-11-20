@@ -1,14 +1,17 @@
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 import type { UserRegistrationForm } from '../../types';
 import { ErrorMessage } from '../../components/ErrorMessage';
-import { Link } from 'react-router-dom';
+import { createAccount } from '../../api/AuthAPI';
 
 export const RegisterView = () => {
   const initialValues: UserRegistrationForm = {
     name: '',
     email: '',
     password: '',
-    password_confirm: '',
+    confirmPassword: '',
   };
 
   const {
@@ -21,9 +24,20 @@ export const RegisterView = () => {
     defaultValues: initialValues,
   });
 
+  const { mutate } = useMutation({
+    mutationFn: createAccount,
+    onSuccess: (data) => {
+      toast.success(data);
+      reset();
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
   const password = watch('password');
 
-  const handleRegister = (formData: UserRegistrationForm) => {};
+  const handleRegister = (formData: UserRegistrationForm) => mutate(formData);
 
   return (
     <>
@@ -97,22 +111,22 @@ export const RegisterView = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="password_confirm" className="font-normal text-2xl">
+          <label htmlFor="confirmPassword" className="font-normal text-2xl">
             Confirm Password
           </label>
           <input
-            id="password_confirm"
+            id="confirmPassword"
             type="password"
             placeholder="Confirm Password"
             className="w-full p-3 border border-gray-300 rounded-md"
-            {...register('password_confirm', {
+            {...register('confirmPassword', {
               required: 'Please confirm your password',
               validate: (value) =>
                 value === password || 'Passwords do not match',
             })}
           />
-          {errors.password_confirm && (
-            <ErrorMessage>{errors.password_confirm.message}</ErrorMessage>
+          {errors.confirmPassword && (
+            <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
           )}
         </div>
 
