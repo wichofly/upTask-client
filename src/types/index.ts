@@ -9,11 +9,17 @@ export const authSchema = z.object({
   email: z.string().email(),
   password: z.string(),
   confirmPassword: z.string(),
+  token: z.string(),
 });
 
 type Auth = z.infer<typeof authSchema>;
 export type UserLoginForm = Pick<Auth, 'email' | 'password'>;
-export type UserRegistrationForm = Pick<Auth, 'name' | 'email' | 'password' | 'confirmPassword'>;
+export type UserRegistrationForm = Pick<
+  Auth,
+  'name' | 'email' | 'password' | 'confirmPassword'
+>;
+
+export type ConfirmToken = Pick<Auth, 'token'>;
 
 /** Tasks 
  ------------
