@@ -138,11 +138,24 @@ export const RegisterView = () => {
 
         <nav>
           Already have an account?{' '}
-          <Link to="/auth/login" className="text-fuchsia-600 hover:underline">
+          <Link
+            to="/auth/login"
+            className="font-medium text-fuchsia-600 hover:underline"
+          >
             Login
           </Link>
         </nav>
       </form>
+
+      <nav className="mt-10 text-center text-xl text-gray-300 font-normal">
+        Forgot your password?{' '}
+        <Link
+          to="/auth/forgot-password"
+          className="text-fuchsia-600 hover:underline"
+        >
+          Reset it here
+        </Link>
+      </nav>
     </>
   );
 };
