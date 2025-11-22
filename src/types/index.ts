@@ -18,6 +18,7 @@ export type UserRegistrationForm = Pick<
   Auth,
   'name' | 'email' | 'password' | 'confirmPassword'
 >;
+export type RequestNewCodeForm = Pick<Auth, 'email'>;
 
 export type ConfirmToken = Pick<Auth, 'token'>;
 
