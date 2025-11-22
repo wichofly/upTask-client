@@ -34,9 +34,14 @@ export const LoginView = () => {
 
   return (
     <>
+      <h1 className="text-5xl font-semibold text-white">Login</h1>
+      <p className="text-2xl font-light text-white mt-5">
+        Welcome back! Please enter your details to login to your account.
+      </p>
+      
       <form
         onSubmit={handleSubmit(handleLogin)}
-        className="space-y-8 p-10 bg-white rounded-md"
+        className="space-y-8 p-10 mt-10 bg-white rounded-md"
         noValidate
       >
         <div className="flex flex-col gap-2">
@@ -91,12 +96,22 @@ export const LoginView = () => {
           Don't have an account?{' '}
           <Link
             to="/auth/register"
-            className="text-fuchsia-600 hover:underline"
+            className="font-medium text-fuchsia-600 hover:underline"
           >
             Register here
           </Link>
         </nav>
       </form>
+
+      <nav className="mt-10 text-center text-xl text-gray-300 font-normal">
+        Forgot your password?{' '}
+        <Link
+          to="/auth/forgot-password"
+          className="text-fuchsia-600 hover:underline"
+        >
+          Reset it here
+        </Link>
+      </nav>
     </>
   );
 };
