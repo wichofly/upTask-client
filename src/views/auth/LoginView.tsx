@@ -2,6 +2,9 @@ import { useForm } from 'react-hook-form';
 import type { UserLoginForm } from '../../types';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { Link } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { loginUser } from '../../api/AuthAPI';
+import { toast } from 'react-toastify';
 
 export const LoginView = () => {
   const initialValues: UserLoginForm = {
@@ -17,7 +20,17 @@ export const LoginView = () => {
     defaultValues: initialValues,
   });
 
-  const handleLogin = (formData: UserLoginForm) => {};
+  const { mutate } = useMutation({
+    mutationFn: loginUser,
+    onSuccess: (data) => {
+      toast.success(data);
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
+  const handleLogin = (formData: UserLoginForm) => mutate(formData);
 
   return (
     <>
