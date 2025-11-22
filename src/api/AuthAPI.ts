@@ -2,6 +2,7 @@ import { isAxiosError } from 'axios';
 import api from '../lib/axios';
 import type {
   ConfirmToken,
+  ForgotPasswordForm,
   RequestNewCodeForm,
   UserLoginForm,
   UserRegistrationForm,
@@ -43,6 +44,17 @@ export const requestConfirmationCode = async (formData: RequestNewCodeForm) => {
 export const loginUser = async (formData: UserLoginForm) => {
   try {
     const { data } = await api.post<string>('/auth/login', formData);
+    return data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.error);
+    }
+  }
+};
+
+export const forgotPassword = async (formData: ForgotPasswordForm) => {
+  try {
+    const { data } = await api.post<string>('/auth/forgot-password', formData);
     return data;
   } catch (error) {
     if (isAxiosError(error) && error.response) {
