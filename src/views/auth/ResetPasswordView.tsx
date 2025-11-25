@@ -22,7 +22,7 @@ export const ResetPasswordView = () => {
           setIsValidCode={setIsValidCode}
         />
       ) : (
-        <NewPasswordForm />
+        <NewPasswordForm token={token} />
       )}
     </>
   );
