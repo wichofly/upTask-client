@@ -4,6 +4,13 @@ import DashboardView from './views/DashboardView';
 import { CreateProjectView } from './views/projects/CreateProjectView';
 import { ProjectDetailsView } from './views/projects/ProjectDetailsView';
 import { EditProjectView } from './views/projects/EditProjectView';
+import { AuthLayout } from './layout/AuthLayout';
+import { LoginView } from './views/auth/LoginView';
+import { RegisterView } from './views/auth/RegisterView';
+import { ConfirmAccountView } from './views/auth/ConfirmAccountView';
+import { RequestNewCodeView } from './views/auth/RequestNewCodeView';
+import { ForgotPasswordView } from './views/auth/ForgotPasswordView';
+import { ResetPasswordView } from './views/auth/ResetPasswordView';
 
 export const Router = () => {
   return (
@@ -17,6 +24,21 @@ export const Router = () => {
             path="/projects/:projectId/edit"
             element={<EditProjectView />}
           />
+        </Route>
+
+        <Route element={<AuthLayout />}>
+          <Route path="/auth/login" element={<LoginView />} />
+          <Route path="/auth/register" element={<RegisterView />} />
+          <Route
+            path="/auth/confirm-account"
+            element={<ConfirmAccountView />}
+          />
+          <Route path="/auth/request-code" element={<RequestNewCodeView />} />
+          <Route
+            path="/auth/forgot-password"
+            element={<ForgotPasswordView />}
+          />
+          <Route path="/auth/reset-password" element={<ResetPasswordView />} />
         </Route>
       </Routes>
     </BrowserRouter>
