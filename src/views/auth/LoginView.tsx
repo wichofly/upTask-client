@@ -22,8 +22,8 @@ export const LoginView = () => {
 
   const { mutate } = useMutation({
     mutationFn: loginUser,
-    onSuccess: (data) => {
-      toast.success(data);
+    onSuccess: () => {
+      toast.success('Logged in successfully');
     },
     onError: (error) => {
       toast.error(error.message);
@@ -38,7 +38,7 @@ export const LoginView = () => {
       <p className="text-2xl font-light text-white mt-5">
         Welcome back! Please enter your details to login to your account.
       </p>
-      
+
       <form
         onSubmit={handleSubmit(handleLogin)}
         className="space-y-8 p-10 mt-10 bg-white rounded-md"

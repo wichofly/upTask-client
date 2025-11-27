@@ -45,6 +45,7 @@ export const requestConfirmationCode = async (formData: RequestNewCodeForm) => {
 export const loginUser = async (formData: UserLoginForm) => {
   try {
     const { data } = await api.post<string>('/auth/login', formData);
+    localStorage.setItem('AUTH_TOKEN', data); // Store token in localStorage
     return data;
   } catch (error) {
     if (isAxiosError(error) && error.response) {
