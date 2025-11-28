@@ -15,7 +15,7 @@ const AppLayout = () => {
   if (data)
     return (
       <>
-        <Header />
+        <Header name={data.name} />
 
         <section className="max-w-screen-2xl mx-auto mt-10 p-5">
           <Outlet />
