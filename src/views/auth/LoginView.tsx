@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import type { UserLoginForm } from '../../types';
 import { ErrorMessage } from '../../components/ErrorMessage';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import { loginUser } from '../../api/AuthAPI';
 import { toast } from 'react-toastify';
@@ -20,10 +20,12 @@ export const LoginView = () => {
     defaultValues: initialValues,
   });
 
+  const navigate = useNavigate();
+
   const { mutate } = useMutation({
     mutationFn: loginUser,
-    onSuccess: (data) => {
-      toast.success(data);
+    onSuccess: () => {
+      navigate('/');
     },
     onError: (error) => {
       toast.error(error.message);
@@ -38,7 +40,7 @@ export const LoginView = () => {
       <p className="text-2xl font-light text-white mt-5">
         Welcome back! Please enter your details to login to your account.
       </p>
-      
+
       <form
         onSubmit={handleSubmit(handleLogin)}
         className="space-y-8 p-10 mt-10 bg-white rounded-md"
