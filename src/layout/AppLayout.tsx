@@ -1,22 +1,31 @@
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { ToastContainer } from 'react-toastify';
+import { useAuth } from '../hooks/useAuth';
 
 const AppLayout = () => {
-  return (
-    <>
-      <Header />
+  const { data, isError, isLoading } = useAuth();
 
-      <section className="max-w-screen-2xl mx-auto mt-10 p-5">
-        <Outlet />
-      </section>
+  if (isLoading)
+    return <p className="text-2xl text-center mt-10">Loading...</p>;
 
-      <Footer />
+  if (isError) return <Navigate to="/auth/login" />;
 
-      <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
-    </>
-  );
+  if (data)
+    return (
+      <>
+        <Header />
+
+        <section className="max-w-screen-2xl mx-auto mt-10 p-5">
+          <Outlet />
+        </section>
+
+        <Footer />
+
+        <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
+      </>
+    );
 };
 
 export default AppLayout;
