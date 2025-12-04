@@ -1,4 +1,5 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { AddMemberModal } from '../../components/team/AddMemberModal';
 
 export const ProjectTeamView = () => {
   const navigate = useNavigate();
@@ -29,6 +30,8 @@ export const ProjectTeamView = () => {
         >
           Back to Project
         </Link>
+
+        <AddMemberModal />
       </nav>
     </>
   );
