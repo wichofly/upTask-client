@@ -6,9 +6,10 @@ import { useParams } from 'react-router-dom';
 
 type SearchResultProps = {
   user: TeamMember;
+  reset: () => void;
 };
 
-export const SearchResult = ({ user }: SearchResultProps) => {
+export const SearchResult = ({ user, reset }: SearchResultProps) => {
   const params = useParams();
   const projectId = params.projectId!;
 
@@ -16,6 +17,7 @@ export const SearchResult = ({ user }: SearchResultProps) => {
     mutationFn: addUserToProject,
     onSuccess: (data) => {
       toast.success(data);
+      reset();
     },
     onError: (error) => {
       toast.error(error.message);

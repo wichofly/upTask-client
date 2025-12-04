@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { ErrorMessage } from '../ErrorMessage';
 import type { TeamMemberForm } from '../../types';
-import { toast } from 'react-toastify';
 import { findUserByEmail } from '../../api/TeamAPI';
 import { SearchResult } from './SearchResult';
 
@@ -30,6 +29,11 @@ export const AddMemberForm = () => {
 
   const handleSearchUser = (formData: TeamMemberForm) =>
     mutation.mutate({ formData, projectId });
+
+  const resetData = () => {
+    reset();
+    mutation.reset();
+  };
 
   return (
     <>
@@ -70,7 +74,9 @@ export const AddMemberForm = () => {
         {mutation.isError && (
           <p className="text-center">{mutation.error.message}</p>
         )}
-        {mutation.data && <SearchResult user={mutation.data} />}
+        {mutation.data && (
+          <SearchResult user={mutation.data} reset={resetData} />
+        )}
       </div>
     </>
   );
