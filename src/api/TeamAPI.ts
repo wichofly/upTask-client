@@ -34,3 +34,14 @@ export const addUserToProject = async ({ projectId, id }: TeamAPIType) => {
     }
   }
 };
+
+export const getProjectTeam = async ({ projectId }: TeamAPIType) => {
+  try {
+    const { data } = await api(`/projects/${projectId}/team`);
+    return data;
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.error);
+    }
+  }
+};
