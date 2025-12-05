@@ -5,7 +5,7 @@ import type { Project, TeamMember, TeamMemberForm } from '../types';
 type TeamAPIType = {
   formData?: TeamMemberForm;
   projectId?: Project['_id'];
-  memberId?: TeamMember['_id'];
+  id?: TeamMember['_id'];
 };
 
 export const findUserByEmail = async ({ formData, projectId }: TeamAPIType) => {
@@ -24,13 +24,10 @@ export const findUserByEmail = async ({ formData, projectId }: TeamAPIType) => {
   }
 };
 
-export const addUserToProject = async ({
-  projectId,
-  memberId,
-}: TeamAPIType) => {
+export const addUserToProject = async ({ projectId, id }: TeamAPIType) => {
   try {
     const { data } = await api.post<string>(`/projects/${projectId}/team`, {
-      memberId,
+      id,
     }); // "id" must be inside of an object
     return data;
   } catch (error) {
@@ -53,11 +50,11 @@ export const getProjectTeam = async ({ projectId }: TeamAPIType) => {
 
 export const removeMemberFromProject = async ({
   projectId,
-  memberId,
+  id,
 }: TeamAPIType) => {
   try {
     const { data } = await api.delete<string>(
-      `/projects/${projectId}/team/${memberId}`
+      `/projects/${projectId}/team/${id}`
     );
     return data;
   } catch (error) {

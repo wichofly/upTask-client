@@ -8,7 +8,7 @@ import {
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
 import type { Project, User } from '../../types';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { removeMemberFromProject } from '../../api/TeamAPI';
 import { toast } from 'react-toastify';
 
@@ -21,10 +21,13 @@ export const ProjectTeamMembers = ({
   team,
   projectId,
 }: ProjectTeamMembersProps) => {
+  const queryClient = useQueryClient();
+
   const { mutate } = useMutation({
     mutationFn: removeMemberFromProject,
     onSuccess: (data) => {
       toast.success(data);
+      queryClient.invalidateQueries({ queryKey: ['projectTeam', projectId] });
     },
     onError: (error) => {
       toast.error(error.message);
@@ -75,9 +78,7 @@ export const ProjectTeamMembers = ({
                         <button
                           type="button"
                           className="block px-3 py-1 text-sm leading-6 text-red-500 cursor-pointer"
-                          onClick={() =>
-                            mutate({ projectId, memberId: member._id })
-                          }
+                          onClick={() => mutate({ projectId, id: member._id })}
                         >
                           Delete Member
                         </button>

@@ -1,4 +1,4 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import type { TeamMember } from '../../types';
 import { addUserToProject } from '../../api/TeamAPI';
@@ -13,11 +13,14 @@ export const SearchResult = ({ user, reset }: SearchResultProps) => {
   const params = useParams();
   const projectId = params.projectId!;
 
+  const queryClient = useQueryClient(); // To invalidate and refetch project team members after adding a new one
+
   const { mutate } = useMutation({
     mutationFn: addUserToProject,
     onSuccess: (data) => {
       toast.success(data);
       reset();
+      queryClient.invalidateQueries({ queryKey: ['projectTeam', projectId] });
     },
     onError: (error) => {
       toast.error(error.message);
