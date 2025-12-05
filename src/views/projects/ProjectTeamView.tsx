@@ -47,7 +47,7 @@ export const ProjectTeamView = () => {
           </Link>
         </nav>
 
-        <ProjectTeamMembers team={data} />
+        <ProjectTeamMembers team={data} projectId={projectId} />
 
         <AddMemberModal />
       </>

@@ -7,13 +7,30 @@ import {
   Transition,
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
-import type { User } from '../../types';
+import type { Project, User } from '../../types';
+import { useMutation } from '@tanstack/react-query';
+import { removeMemberFromProject } from '../../api/TeamAPI';
+import { toast } from 'react-toastify';
 
 type ProjectTeamMembersProps = {
   team: User[];
+  projectId: Project['_id'];
 };
 
-export const ProjectTeamMembers = ({ team }: ProjectTeamMembersProps) => {
+export const ProjectTeamMembers = ({
+  team,
+  projectId,
+}: ProjectTeamMembersProps) => {
+  const { mutate } = useMutation({
+    mutationFn: removeMemberFromProject,
+    onSuccess: (data) => {
+      toast.success(data);
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
   return (
     <>
       <h2 className="text-5xl font-semibold my-10">Project Team Members</h2>
@@ -58,6 +75,9 @@ export const ProjectTeamMembers = ({ team }: ProjectTeamMembersProps) => {
                         <button
                           type="button"
                           className="block px-3 py-1 text-sm leading-6 text-red-500 cursor-pointer"
+                          onClick={() =>
+                            mutate({ projectId, memberId: member._id })
+                          }
                         >
                           Delete Member
                         </button>
