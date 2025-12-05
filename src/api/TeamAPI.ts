@@ -29,7 +29,7 @@ export const addUserToProject = async ({
   memberId,
 }: TeamAPIType) => {
   try {
-    const { data } = await api.post(`/projects/${projectId}/team`, {
+    const { data } = await api.post<string>(`/projects/${projectId}/team`, {
       memberId,
     }); // "id" must be inside of an object
     return data;
@@ -56,7 +56,7 @@ export const removeMemberFromProject = async ({
   memberId,
 }: TeamAPIType) => {
   try {
-    const { data } = await api.delete(
+    const { data } = await api.delete<string>(
       `/projects/${projectId}/team/${memberId}`
     );
     return data;
