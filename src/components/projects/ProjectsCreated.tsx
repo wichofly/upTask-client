@@ -15,9 +15,10 @@ import { toast } from 'react-toastify';
 
 type ProjectsCreatedProps = {
   projects: Project[];
+  user: Project['manager'];
 };
 
-export const ProjectsCreated = ({ projects }: ProjectsCreatedProps) => {
+export const ProjectsCreated = ({ projects, user }: ProjectsCreatedProps) => {
   const queryClient = useQueryClient();
 
   const { mutate } = useMutation({
@@ -49,7 +50,7 @@ export const ProjectsCreated = ({ projects }: ProjectsCreatedProps) => {
               >
                 {project.projectName}
               </Link>
-              <p className="text-sm text-gray-400"> 
+              <p className="text-sm text-gray-400">
                 Client: {project.clientName}
               </p>
               <p className="text-sm text-gray-400">{project.description}</p>
@@ -79,25 +80,29 @@ export const ProjectsCreated = ({ projects }: ProjectsCreatedProps) => {
                       View Project
                     </Link>
                   </MenuItem>
-                  <MenuItem>
-                    <Link
-                      to={`/projects/${project._id}/edit`}
-                      className="block px-3 py-1 text-sm leading-6 text-gray-900"
-                    >
-                      Edit Project
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <button
-                      type="button"
-                      className="block px-3 py-1 text-sm leading-6 text-red-500 cursor-pointer"
-                      onClick={() => {
-                        mutate(project._id);
-                      }}
-                    >
-                      Delete Project
-                    </button>
-                  </MenuItem>
+                  {project.manager === user && (
+                    <>
+                      <MenuItem>
+                        <Link
+                          to={`/projects/${project._id}/edit`}
+                          className="block px-3 py-1 text-sm leading-6 text-gray-900"
+                        >
+                          Edit Project
+                        </Link>
+                      </MenuItem>
+                      <MenuItem>
+                        <button
+                          type="button"
+                          className="block px-3 py-1 text-sm leading-6 text-red-500 cursor-pointer"
+                          onClick={() => {
+                            mutate(project._id);
+                          }}
+                        >
+                          Delete Project
+                        </button>
+                      </MenuItem>
+                    </>
+                  )}
                 </MenuItems>
               </Transition>
             </Menu>

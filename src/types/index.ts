@@ -72,6 +72,7 @@ export const ProjectSchema = z.object({
   projectName: z.string(),
   clientName: z.string(),
   description: z.string(),
+  manager: z.string(),
 });
 
 // Schema for array of Projects in Dashboard view
@@ -81,6 +82,7 @@ export const dashboardProjectSchema = z.array(
     projectName: true,
     clientName: true,
     description: true,
+    manager: true,
   })
 );
 
