@@ -2,16 +2,22 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { getProjects } from '../api/ProjectAPI';
 import { ProjectsCreated } from '../components/projects/ProjectsCreated';
+import { useAuth } from '../hooks/useAuth';
 
 const DashboardView = () => {
+  const { data: user, isLoading: authLoading } = useAuth();
+
   const { data, isLoading } = useQuery({
     queryKey: ['projects'],
     queryFn: getProjects,
   });
 
-  if (isLoading) return <p className="text-2xl text-center">Loading...</p>;
+  console.log(data);
 
-  if (data)
+  if (isLoading && authLoading)
+    return <p className="text-2xl text-center">Loading...</p>;
+
+  if (data && user)
     return (
       <>
         <h1 className="text-5xl font-semibold">My Projects</h1>
@@ -27,7 +33,7 @@ const DashboardView = () => {
         </Link>
 
         {data.length ? (
-          <ProjectsCreated projects={data} />
+          <ProjectsCreated projects={data} user={user._id} />
         ) : (
           <p className="text-center py-20 font-semibold text-2xl">
             There are not projects.{' '}
