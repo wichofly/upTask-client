@@ -21,13 +21,14 @@ export const ProjectDetailsView = () => {
     retry: false,
   });
 
-  const managerCanEdit = data?.manager === user?._id;
-
   if (isLoading && authLoading)
     return <p className="text-2xl text-center">Loading...</p>;
   if (isError) return <Navigate to="/404" />;
 
-  if (data && user)
+  if (data && user) {
+    const canEdit = isManager(data.manager, user._id);
+    console.log(canEdit);
+
     return (
       <>
         <h1 className="text-5xl font-semibold">{data.projectName}</h1>
@@ -35,7 +36,7 @@ export const ProjectDetailsView = () => {
           {data.description}
         </p>
 
-        {isManager(data.manager, user._id) && (
+        {canEdit && (
           <nav className="my-5 flex gap-3">
             <button
               type="button"
@@ -54,10 +55,11 @@ export const ProjectDetailsView = () => {
           </nav>
         )}
 
-        <TaskList tasks={data.tasks} managerCanEdit={managerCanEdit} />
+        <TaskList tasks={data.tasks} managerCanEdit={canEdit} />
         <AddTaskModal />
         <EditTaskData />
         <TaskModalDetails />
       </>
     );
+  }
 };
