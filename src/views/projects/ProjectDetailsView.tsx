@@ -21,8 +21,10 @@ export const ProjectDetailsView = () => {
     retry: false,
   });
 
+  const managerCanEdit = data?.manager === user?._id;
+
   if (isLoading && authLoading)
-    return <p className="text-2xl text-center">Loading...</p>;  
+    return <p className="text-2xl text-center">Loading...</p>;
   if (isError) return <Navigate to="/404" />;
 
   if (data && user)
@@ -52,7 +54,7 @@ export const ProjectDetailsView = () => {
           </nav>
         )}
 
-        <TaskList tasks={data.tasks} />
+        <TaskList tasks={data.tasks} managerCanEdit={managerCanEdit} />
         <AddTaskModal />
         <EditTaskData />
         <TaskModalDetails />
