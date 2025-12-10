@@ -12,6 +12,7 @@ import type { Project } from '../../types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteProject } from '../../api/ProjectAPI';
 import { toast } from 'react-toastify';
+import { isManager } from '../../utils/policies';
 
 type ProjectsCreatedProps = {
   projects: Project[];
@@ -44,8 +45,8 @@ export const ProjectsCreated = ({ projects, user }: ProjectsCreatedProps) => {
         >
           <div className="flex min-w-0 gap-x-4">
             <div className="min-w-0 flex-auto space-y-2">
-              <div className='mb-2'>
-                {project.manager === user ? (
+              <div className="mb-2">
+                {isManager(project.manager, user) ? (
                   <p className="font-semibold text-xs uppercase bg-indigo-50 text-indigo-500 border-2 border-indigo-500 rounded-lg inline-block py-1 px-5">
                     Manager
                   </p>
@@ -92,7 +93,7 @@ export const ProjectsCreated = ({ projects, user }: ProjectsCreatedProps) => {
                       View Project
                     </Link>
                   </MenuItem>
-                  {project.manager === user && (
+                  {isManager(project.manager, user) && (
                     <>
                       <MenuItem>
                         <Link
