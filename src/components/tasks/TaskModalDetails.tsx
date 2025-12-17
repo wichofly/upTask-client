@@ -61,8 +61,6 @@ export default function TaskModalDetails() {
     return <Navigate to={`/projects/${projectId}`} />;
   }
 
-  console.log(data);
-
   if (data)
     return (
       <>
@@ -112,12 +110,19 @@ export default function TaskModalDetails() {
                       Description: {data.description}
                     </p>
 
-                    {data.completedBy && (
-                      <p className="text-slate-600">
-                        <span className="font-bold ">State updated by:</span>{' '}
-                        {data.completedBy.name}
-                      </p>
-                    )}
+                    <p className="text-lg text-slate-500 mb-2">
+                      Change History
+                    </p>
+                    <ul className="list-decimal">
+                      {data.completedBy.map((activityLog) => (
+                        <li key={activityLog._id} className="text-slate-600">
+                          <span className="font-bold ">
+                            {statusTexts[activityLog.status]}
+                          </span>{' '}
+                          by: {activityLog.user.name}
+                        </li>
+                      ))}
+                    </ul>
 
                     <div className="my-5 space-y-3">
                       <label className="font-bold">Current Status:</label>

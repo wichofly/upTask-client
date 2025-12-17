@@ -27,7 +27,6 @@ export const ProjectDetailsView = () => {
 
   if (data && user) {
     const canEdit = isManager(data.manager, user._id);
-    console.log(canEdit);
 
     return (
       <>
