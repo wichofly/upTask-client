@@ -25,6 +25,7 @@ export const NewPasswordToken = ({
     },
     onError: (error) => {
       toast.error(error.message);
+      setToken(''); // clear the input when token is invalid
     },
   });
 

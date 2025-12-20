@@ -61,8 +61,6 @@ export default function TaskModalDetails() {
     return <Navigate to={`/projects/${projectId}`} />;
   }
 
-  console.log(data);
-
   if (data)
     return (
       <>
@@ -108,9 +106,24 @@ export default function TaskModalDetails() {
                     >
                       {data.name}
                     </DialogTitle>
-                    <p className="text-lg text-slate-500 mb-2">
+                    <p className="text-xl text-slate-500 mb-2">
                       Description: {data.description}
                     </p>
+
+                    <p className="text-lg text-slate-500 mb-2 underline underline-offset-2">
+                      Change History
+                    </p>
+                    <ul className="list-decimal">
+                      {data.completedBy.map((activityLog) => (
+                        <li key={activityLog._id} className="text-slate-600">
+                          <span className="font-bold ">
+                            {`${statusTexts[activityLog.status]} by`}
+                          </span>
+                          : {activityLog.user.name}
+                        </li>
+                      ))}
+                    </ul>
+
                     <div className="my-5 space-y-3">
                       <label className="font-bold">Current Status:</label>
                       <select
