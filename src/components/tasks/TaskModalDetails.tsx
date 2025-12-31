@@ -18,6 +18,7 @@ import { toast } from 'react-toastify';
 import { formatData } from '../../utils/utils';
 import { statusTexts } from '../../locales/status';
 import type { TaskStatus } from '../../types';
+import { NotesPanel } from '../notes/NotesPanel';
 
 export default function TaskModalDetails() {
   const params = useParams();
@@ -145,6 +146,8 @@ export default function TaskModalDetails() {
                         ))}
                       </select>
                     </div>
+
+                    <NotesPanel />
                   </DialogPanel>
                 </TransitionChild>
               </div>
