@@ -18,7 +18,7 @@ export const NotesPanel = ({ notes }: NotesPanelProps) => {
               Notes:
             </p>
             {notes.map((note) => (
-              <NoteDetail key={note._id} />
+              <NoteDetail key={note._id} note={note} />
             ))}
           </>
         ) : (
