@@ -1,8 +1,20 @@
 import { useForm } from 'react-hook-form';
+import { useLocation, useParams } from 'react-router-dom';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 import type { NoteFormData } from '../../types';
 import { ErrorMessage } from '../ErrorMessage';
+import { createNote } from '../../api/NoteAPI';
 
 export const AddNotesForm = () => {
+  const params = useParams();
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
+  const projectId = params.projectId!;
+  const taskId = queryParams.get('viewTask')!;
+
   const initialValues: NoteFormData = {
     content: '',
   };
@@ -10,11 +22,23 @@ export const AddNotesForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
+  const { mutate } = useMutation({
+    mutationFn: createNote,
+    onSuccess: (data) => {
+      toast.success(data);
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
   const handleAddNote = (formData: NoteFormData) => {
-    console.log(formData);
+    mutate({ formData, projectId, taskId });
+    reset();
   };
 
   return (
@@ -37,12 +61,8 @@ export const AddNotesForm = () => {
         {errors.content && (
           <ErrorMessage>{errors.content.message}</ErrorMessage>
         )}
-        {/* <textarea
-          id="content"
-          placeholder="Write your note here..."
-          className="w-full p-3 border border-gray-300 rounded-md h-32 resize-none"
-        /> */}
       </div>
+
       <input
         type="submit"
         value="Add Note"
