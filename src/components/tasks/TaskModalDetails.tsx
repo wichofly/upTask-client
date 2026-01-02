@@ -107,13 +107,13 @@ export default function TaskModalDetails() {
                     >
                       {data.name}
                     </DialogTitle>
-                    <p className="text-xl text-slate-500 mb-2">
+                    <p className="text-2xl text-slate-500 mb-2">
                       Description: {data.description}
                     </p>
 
                     {data.completedBy.length ? (
                       <>
-                        <p className="text-lg text-slate-500 mb-2 underline underline-offset-2">
+                        <p className="text-xl text-slate-500 mb-2 underline underline-offset-2">
                           Change History
                         </p>
                         <ul className="list-decimal">
@@ -147,7 +147,7 @@ export default function TaskModalDetails() {
                       </select>
                     </div>
 
-                    <NotesPanel />
+                    <NotesPanel notes={data.notes} />
                   </DialogPanel>
                 </TransitionChild>
               </div>
