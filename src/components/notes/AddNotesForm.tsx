@@ -32,7 +32,7 @@ export const AddNotesForm = () => {
     mutationFn: createNote,
     onSuccess: (data) => {
       toast.success(data);
-      queryClient.invalidateQueries({ queryKey: ['task', taskId] });
+      queryClient.invalidateQueries({ queryKey: ['task', taskId] }); // Invalidate task query to refresh notes
     },
     onError: (error) => {
       toast.error(error.message);
