@@ -9,9 +9,6 @@ import {
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
 import type { Project } from '../../types';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteProject } from '../../api/ProjectAPI';
-import { toast } from 'react-toastify';
 import { isManager } from '../../utils/policies';
 import { DeleteProjectModal } from './DeleteProjectModal';
 
@@ -23,19 +20,6 @@ type ProjectsCreatedProps = {
 export const ProjectsCreated = ({ projects, user }: ProjectsCreatedProps) => {
   const location = useLocation();
   const navigate = useNavigate();
-
-  const queryClient = useQueryClient();
-
-  const { mutate } = useMutation({
-    mutationFn: deleteProject,
-    onSuccess: (data) => {
-      toast.success(data);
-      queryClient.invalidateQueries({ queryKey: ['projects'] });
-    },
-    onError: (error) => {
-      toast.error(error.message);
-    },
-  });
 
   return (
     <>
