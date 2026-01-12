@@ -1,6 +1,7 @@
 import type { Task } from '../../types';
 import { TaskCard } from './TaskCard';
 import { statusTexts } from '../../locales/status';
+import { DropTask } from './DropTask';
 
 type TaskListProps = {
   tasks: Task[];
@@ -46,13 +47,22 @@ export const TaskList = ({ tasks, managerCanEdit }: TaskListProps) => {
             >
               {statusTexts[status]}
             </h3>
+
+            <DropTask />
+
             <ul className="mt-5 space-y-5">
               {tasks.length === 0 ? (
                 <li className="text-gray-500 text-center pt-3">
                   There are no tasks
                 </li>
               ) : (
-                tasks.map((task) => <TaskCard key={task._id} task={task} managerCanEdit={managerCanEdit} />)
+                tasks.map((task) => (
+                  <TaskCard
+                    key={task._id}
+                    task={task}
+                    managerCanEdit={managerCanEdit}
+                  />
+                ))
               )}
             </ul>
           </div>
