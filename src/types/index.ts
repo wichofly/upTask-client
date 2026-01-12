@@ -22,9 +22,13 @@ export type UserRegistrationForm = Pick<
 export type RequestNewCodeForm = Pick<Auth, 'email'>;
 export type ForgotPasswordForm = Pick<Auth, 'email'>;
 export type ResetPasswordForm = Pick<Auth, 'password' | 'confirmPassword'>;
-export type UpdatePasswordForm = Pick<Auth, 'currentPassword' | 'password' | 'confirmPassword'>;
+export type UpdatePasswordForm = Pick<
+  Auth,
+  'currentPassword' | 'password' | 'confirmPassword'
+>;
 
 export type ConfirmToken = Pick<Auth, 'token'>;
+export type CheckPasswordForm = Pick<Auth, 'password'>;
 
 /** Users
  -----------
