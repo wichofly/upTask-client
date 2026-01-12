@@ -7,6 +7,7 @@ import { z } from 'zod';
 export const authSchema = z.object({
   name: z.string(),
   email: z.string().email(),
+  currentPassword: z.string(),
   password: z.string(),
   confirmPassword: z.string(),
   token: z.string(),
@@ -21,6 +22,7 @@ export type UserRegistrationForm = Pick<
 export type RequestNewCodeForm = Pick<Auth, 'email'>;
 export type ForgotPasswordForm = Pick<Auth, 'email'>;
 export type ResetPasswordForm = Pick<Auth, 'password' | 'confirmPassword'>;
+export type UpdatePasswordForm = Pick<Auth, 'currentPassword' | 'password' | 'confirmPassword'>;
 
 export type ConfirmToken = Pick<Auth, 'token'>;
 
@@ -36,6 +38,7 @@ export const userSchema = authSchema
   .extend({ _id: z.string() });
 
 export type User = z.infer<typeof userSchema>;
+export type UserProfileForm = Pick<User, 'name' | 'email'>;
 
 /** Notes
  ------------
