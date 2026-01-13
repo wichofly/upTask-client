@@ -2,6 +2,8 @@ import { isAxiosError } from 'axios';
 import api from '../lib/axios';
 import {
   dashboardProjectSchema,
+  editProjectSchema,
+  ProjectSchema,
   type Project,
   type ProjectFormData,
 } from '../types';
@@ -34,7 +36,24 @@ export const getProjects = async () => {
 export const getProjectById = async (id: Project['_id']) => {
   try {
     const { data } = await api(`/projects/${id}`);
-    return data;
+    const response = editProjectSchema.safeParse(data);
+    if (response.success) {
+      return response.data;
+    }
+  } catch (error) {
+    if (isAxiosError(error) && error.response) {
+      throw new Error(error.response.data.error);
+    }
+  }
+};
+
+export const getFullProjects = async (id: Project['_id']) => {
+  try {
+    const { data } = await api(`/projects/${id}`);
+    const response = ProjectSchema.safeParse(data);
+    if (response.success) {
+      return response.data;
+    }
   } catch (error) {
     if (isAxiosError(error) && error.response) {
       throw new Error(error.response.data.error);

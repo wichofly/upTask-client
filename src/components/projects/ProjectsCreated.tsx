@@ -8,12 +8,12 @@ import {
   Transition,
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
-import type { Project } from '../../types';
+import type { DashboardProject, Project } from '../../types';
 import { isManager } from '../../utils/policies';
 import { DeleteProjectModal } from './DeleteProjectModal';
 
 type ProjectsCreatedProps = {
-  projects: Project[];
+  projects: DashboardProject[];
   user: Project['manager'];
 };
 

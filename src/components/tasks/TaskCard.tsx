@@ -7,7 +7,7 @@ import {
   Transition,
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
-import type { Task } from '../../types';
+import type { TaskProject } from '../../types';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteTask } from '../../api/TaskAPI';
@@ -15,7 +15,7 @@ import { toast } from 'react-toastify';
 import { useDraggable } from '@dnd-kit/core';
 
 type TaskCardProps = {
-  task: Task;
+  task: TaskProject;
   managerCanEdit: boolean;
 };
 
@@ -62,7 +62,11 @@ export const TaskCard = ({ task, managerCanEdit }: TaskCardProps) => {
         >
           {task.name}
         </button>
-        <p {...listeners} {...attributes} className="text-slate-500 cursor-grabbing">
+        <p
+          {...listeners}
+          {...attributes}
+          className="text-slate-500 cursor-grabbing"
+        >
           {task.description}
         </p>
       </div>
