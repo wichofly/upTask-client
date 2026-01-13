@@ -1,8 +1,12 @@
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
-import type { Task } from '../../types';
+import type { Task, TaskStatus } from '../../types';
 import { TaskCard } from './TaskCard';
 import { statusTexts } from '../../locales/status';
 import { DropTask } from './DropTask';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
+import { updateStatus } from '../../api/TaskAPI';
 
 type TaskListProps = {
   tasks: Task[];
@@ -30,6 +34,22 @@ const statusStyles: { [key: string]: string } = {
 };
 
 export const TaskList = ({ tasks, managerCanEdit }: TaskListProps) => {
+  const params = useParams();
+  const projectId = params.projectId!;
+
+  const queryClient = useQueryClient();
+
+  const { mutate } = useMutation({
+    mutationFn: updateStatus,
+    onSuccess: (data) => {
+      toast.success(data);
+      queryClient.invalidateQueries({ queryKey: ['project', projectId] });
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
   const groupedTasks = tasks.reduce((acc, task) => {
     let currentGroup = acc[task.status] ? [...acc[task.status]] : [];
     currentGroup = [...currentGroup, task];
@@ -39,10 +59,11 @@ export const TaskList = ({ tasks, managerCanEdit }: TaskListProps) => {
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
-    if (active.id !== over?.id) {
-      console.log('Validate');
-    } else {
-      console.log('Invalidate');
+    if (over && over.id) {
+      const taskId = active.id.toString();
+      const status = over.id as TaskStatus;
+
+      mutate({ projectId, taskId, status });
     }
   };
 
