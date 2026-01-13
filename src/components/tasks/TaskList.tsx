@@ -1,4 +1,4 @@
-import { DndContext } from '@dnd-kit/core';
+import { DndContext, type DragEndEvent } from '@dnd-kit/core';
 import type { Task } from '../../types';
 import { TaskCard } from './TaskCard';
 import { statusTexts } from '../../locales/status';
@@ -36,12 +36,22 @@ export const TaskList = ({ tasks, managerCanEdit }: TaskListProps) => {
     return { ...acc, [task.status]: currentGroup };
   }, initialStatusGroups);
 
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (active.id !== over?.id) {
+      console.log('Validate');
+    } else {
+      console.log('Invalidate');
+    }
+  };
+
   return (
     <>
       <h1 className="text-5xl font-semibold my-10">Tasks List</h1>
 
       <div className="flex gap-5 overflow-x-scroll 2xl:overflow-auto pb-32">
-        <DndContext>
+        <DndContext onDragEnd={handleDragEnd}>
           {Object.entries(groupedTasks).map(([status, tasks]) => (
             <div key={status} className="min-w-[300px] 2xl:min-w-0 2xl:w-1/5">
               <h3
@@ -50,7 +60,7 @@ export const TaskList = ({ tasks, managerCanEdit }: TaskListProps) => {
                 {statusTexts[status]}
               </h3>
 
-              <DropTask />
+              <DropTask status={status} />
 
               <ul className="mt-5 space-y-5">
                 {tasks.length === 0 ? (
