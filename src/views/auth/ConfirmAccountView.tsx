@@ -6,7 +6,7 @@ import { PinInput, PinInputField } from '@chakra-ui/pin-input';
 import type { ConfirmToken } from '../../types';
 import { confirmAccount } from '../../api/AuthAPI';
 
-export const ConfirmAccountView = () => {
+const ConfirmAccountView = () => {
   const [token, setToken] = useState<ConfirmToken['token']>('');
 
   const navigate = useNavigate();
@@ -68,3 +68,5 @@ export const ConfirmAccountView = () => {
     </>
   );
 };
+
+export default ConfirmAccountView;

@@ -6,7 +6,7 @@ import { useMutation } from '@tanstack/react-query';
 import { requestConfirmationCode } from '../../api/AuthAPI';
 import { toast } from 'react-toastify';
 
-export const RequestNewCodeView = () => {
+const RequestNewCodeView = () => {
   const initialValues: RequestNewCodeForm = {
     email: '',
   };
@@ -90,3 +90,5 @@ export const RequestNewCodeView = () => {
     </>
   );
 };
+
+export default RequestNewCodeView;

@@ -6,7 +6,7 @@ import { createProject } from '../../api/ProjectAPI';
 import { toast } from 'react-toastify';
 import { useMutation } from '@tanstack/react-query';
 
-export const CreateProjectView = () => {
+const CreateProjectView = () => {
   const initialValues: ProjectFormData = {
     projectName: '',
     clientName: '',
@@ -66,3 +66,5 @@ export const CreateProjectView = () => {
     </>
   );
 };
+
+export default CreateProjectView;

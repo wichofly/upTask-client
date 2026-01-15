@@ -5,7 +5,7 @@ import { useMutation } from '@tanstack/react-query';
 import { changePassword } from '../../api/ProfileAPI';
 import { toast } from 'react-toastify';
 
-export const ChangePasswordView = () => {
+const ChangePasswordView = () => {
   const initialValues: UpdatePasswordForm = {
     currentPassword: '',
     password: '',
@@ -121,3 +121,5 @@ export const ChangePasswordView = () => {
     </>
   );
 };
+
+export default ChangePasswordView;

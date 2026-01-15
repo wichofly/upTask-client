@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <>
       <h1 className="font-semibold text-center text-4xl text-white">
@@ -15,3 +15,5 @@ export const NotFound = () => {
     </>
   );
 };
+
+export default NotFound;

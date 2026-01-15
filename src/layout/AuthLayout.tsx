@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { Logo } from '../components/Logo';
 
-export const AuthLayout = () => {
+const AuthLayout = () => {
   return (
     <>
       <div className="bg-gray-800 min-h-screen">
@@ -17,3 +17,5 @@ export const AuthLayout = () => {
     </>
   );
 };
+
+export default AuthLayout;

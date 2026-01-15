@@ -1,7 +1,7 @@
 import { ProfileForm } from '../../components/profile/ProfileForm';
 import { useAuth } from '../../hooks/useAuth';
 
-export const ProfileView = () => {
+const ProfileView = () => {
   const { data, isLoading } = useAuth();
 
   if (isLoading)
@@ -9,3 +9,5 @@ export const ProfileView = () => {
 
   if (data) return <ProfileForm data={data} />;
 };
+
+export default ProfileView;

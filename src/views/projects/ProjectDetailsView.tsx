@@ -8,7 +8,7 @@ import TaskModalDetails from '../../components/tasks/TaskModalDetails';
 import { useAuth } from '../../hooks/useAuth';
 import { isManager } from '../../utils/policies';
 
-export const ProjectDetailsView = () => {
+const ProjectDetailsView = () => {
   const { data: user, isLoading: authLoading } = useAuth();
 
   const params = useParams();
@@ -22,7 +22,7 @@ export const ProjectDetailsView = () => {
   });
 
   if (isLoading && authLoading)
-    return <p className="text-2xl text-center">Loading...</p>;
+    return <p className="text-2xl text-center mt-10">Loading...</p>;
   if (isError) return <Navigate to="/404" />;
 
   if (data && user) {
@@ -62,3 +62,5 @@ export const ProjectDetailsView = () => {
     );
   }
 };
+
+export default ProjectDetailsView;

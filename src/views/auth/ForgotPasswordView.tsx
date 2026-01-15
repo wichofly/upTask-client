@@ -6,7 +6,7 @@ import type { ForgotPasswordForm } from '../../types';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { forgotPassword } from '../../api/AuthAPI';
 
-export const ForgotPasswordView = () => {
+const ForgotPasswordView = () => {
   const initialValues: ForgotPasswordForm = {
     email: '',
   };
@@ -90,3 +90,5 @@ export const ForgotPasswordView = () => {
     </>
   );
 };
+
+export default ForgotPasswordView;

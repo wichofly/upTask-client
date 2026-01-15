@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getProjectTeam } from '../../api/TeamAPI';
 import { ProjectTeamMembers } from '../../components/team/ProjectTeamMembers';
 
-export const ProjectTeamView = () => {
+const ProjectTeamView = () => {
   const navigate = useNavigate();
 
   // Get projectId from URL params
@@ -53,3 +53,5 @@ export const ProjectTeamView = () => {
       </>
     );
 };
+
+export default ProjectTeamView;

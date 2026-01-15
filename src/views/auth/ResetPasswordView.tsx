@@ -3,7 +3,7 @@ import { NewPasswordToken } from '../../components/auth/NewPasswordToken';
 import { NewPasswordForm } from '../../components/auth/NewPasswordForm';
 import type { ConfirmToken } from '../../types';
 
-export const ResetPasswordView = () => {
+const ResetPasswordView = () => {
   const [token, setToken] = useState<ConfirmToken['token']>('');
   const [isValidCode, setIsValidCode] = useState(false);
 
@@ -27,3 +27,5 @@ export const ResetPasswordView = () => {
     </>
   );
 };
+
+export default ResetPasswordView;

@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Tabs } from '../components/profile/Tabs';
 
-export const ProfileLayout = () => {
+const ProfileLayout = () => {
   return (
     <>
       <Tabs />
@@ -9,3 +9,5 @@ export const ProfileLayout = () => {
     </>
   );
 };
+
+export default ProfileLayout;

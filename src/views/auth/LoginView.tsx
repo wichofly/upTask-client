@@ -6,7 +6,7 @@ import { useMutation } from '@tanstack/react-query';
 import { loginUser } from '../../api/AuthAPI';
 import { toast } from 'react-toastify';
 
-export const LoginView = () => {
+const LoginView = () => {
   const initialValues: UserLoginForm = {
     email: '',
     password: '',
@@ -117,3 +117,5 @@ export const LoginView = () => {
     </>
   );
 };
+
+export default LoginView;

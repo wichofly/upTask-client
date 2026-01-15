@@ -6,7 +6,7 @@ import type { UserRegistrationForm } from '../../types';
 import { ErrorMessage } from '../../components/ErrorMessage';
 import { createAccount } from '../../api/AuthAPI';
 
-export const RegisterView = () => {
+const RegisterView = () => {
   const initialValues: UserRegistrationForm = {
     name: '',
     email: '',
@@ -159,3 +159,5 @@ export const RegisterView = () => {
     </>
   );
 };
+
+export default RegisterView;
