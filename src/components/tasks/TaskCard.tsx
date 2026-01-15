@@ -7,18 +7,23 @@ import {
   Transition,
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
-import type { Task } from '../../types';
+import type { TaskProject } from '../../types';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteTask } from '../../api/TaskAPI';
 import { toast } from 'react-toastify';
+import { useDraggable } from '@dnd-kit/core';
 
 type TaskCardProps = {
-  task: Task;
+  task: TaskProject;
   managerCanEdit: boolean;
 };
 
 export const TaskCard = ({ task, managerCanEdit }: TaskCardProps) => {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id: task._id,
+  });
+
   const navigate = useNavigate();
 
   const params = useParams();
@@ -37,8 +42,18 @@ export const TaskCard = ({ task, managerCanEdit }: TaskCardProps) => {
     },
   });
 
+  const style = transform
+    ? {
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+      }
+    : undefined;
+
   return (
-    <li className="p-5 bg-white border border-slate-300 flex justify-between gap-3 rounded-md">
+    <li
+      ref={setNodeRef}
+      style={style}
+      className="p-5 bg-white border border-slate-300 flex justify-between gap-3 rounded-md"
+    >
       <div className="min-w-0 flex flex-col gap-y-4">
         <button
           type="button"
@@ -47,7 +62,13 @@ export const TaskCard = ({ task, managerCanEdit }: TaskCardProps) => {
         >
           {task.name}
         </button>
-        <p className="text-slate-500">{task.description}</p>
+        <p
+          {...listeners}
+          {...attributes}
+          className="text-slate-500 cursor-grabbing"
+        >
+          {task.description}
+        </p>
       </div>
 
       <div className="flex shrink-0 gap-x-6">

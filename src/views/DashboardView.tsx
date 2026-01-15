@@ -14,7 +14,7 @@ const DashboardView = () => {
 
   console.log(data);
 
-  if (isLoading && authLoading)
+  if (isLoading || authLoading)
     return <p className="text-2xl text-center">Loading...</p>;
 
   if (data && user)
