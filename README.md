@@ -62,6 +62,31 @@ The UI is designed with accessibility and usability in mind.
 
 [dnd-kit](https://docs.dndkit.com/) provides drag-and-drop without sacrificing accessibility.
 
+## Demo Accounts
+
+| Name  | Email         | Password |
+| ----- | ------------- | -------- |
+| Flor  | flor@test.com | codecode |
+| Tino  | tino@test.com | tinotino |
+| Mauri | mau@test.com  | password |
+
+These accounts already exist in the database and can be used to log in immediately. **They are intended for demonstration purposes only and contain no real data**.
+
+#### Why Demo Accounts Are Provided?
+
+The application uses Nodemailer with Ethereal for transactional emails during development (account confirmation and password recovery).
+Since Ethereal inboxes are generated dynamically per environment, users who only visit the deployed site would not be able to receive confirmation codes unless they run the project locally.
+
+Providing demo accounts allows reviewers to access the platform and test all core features without cloning the repository.
+
+Local Testing
+
+If you clone and run the project locally, you can register new users and view email previews directly in the backend logs via Ethereal.
+
+#### Local Testing
+
+If you clone and run the project locally, you can register new users and view email previews directly in the backend logs via Ethereal.
+
 ## Backend Integration
 
 This frontend is directly connected to the backend repository at: [UpTask Server](https://github.com/wichofly/upTask-server)
