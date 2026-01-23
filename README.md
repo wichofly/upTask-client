@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# UpTask Client - Project Management Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+UpTask Client is the React + TypeScript frontend for the UpTask platform.
+It consumes the UpTask API and provides a complete UI for managing projects, tasks, and collaborators.
 
-Currently, two official plugins are available:
+The application uses layout-based routing, lazy-loaded views for performance optimization, and React Query for server-state synchronization.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The UI is designed with accessibility and usability in mind.
 
-## React Compiler
+## Core Features
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### Authentication UI
 
-## Expanding the ESLint configuration
+- Login, registration, and email confirmation flows
+- Password reset screens
+- Protected routes
+- Token persistence with localStorage
+- Logout handling
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Project Dashboard
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- List of projects owned or shared
+- Manager vs collaborator badges
+- Create and edit projects
+- Team management view
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Task Board
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Kanban-style workflow columns
+- Drag & drop tasks between states
+- Task detail modals
+- Edit and delete task actions
+- Real-time UI updates via cache invalidation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Frontend Architecture
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Layout routes for authenticated vs unauthenticated sections
+- Modular routing files
+- Lazy loaded views
+- Centralized Axios client
+- Zod schema validation
+- Toast notifications
+- Accessible menus and dialogs
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Technologies Used
+
+- React
+- TypeScript
+- React Router
+- TanStack React Query
+- Axios
+- Zod
+- TailwindCSS
+- Headless UI
+- dnd-kit
+
+## Key Technologies Explained
+
+[React Query](https://tanstack.com/query/latest/docs/framework/react/overview) manages server data, caching, and synchronization.
+
+[Zod](https://zod.dev/) validates API payloads at runtime.
+
+[dnd-kit](https://docs.dndkit.com/) provides drag-and-drop without sacrificing accessibility.
+
+## Backend Integration
+
+This frontend is directly connected to the backend repository at: [UpTask Server](https://github.com/wichofly/upTask-server)
+
+## Deployment
+
+Frontend:
+Project deployed at Vercel: [UpTask Client](https://up-task-client-two.vercel.app)
