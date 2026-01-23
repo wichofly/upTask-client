@@ -74,7 +74,7 @@ These accounts already exist in the database and can be used to log in immediate
 
 #### Why Demo Accounts Are Provided?
 
-The application uses Nodemailer with Ethereal for transactional emails during development (account confirmation and password recovery).
+The application uses Nodemailer with [Ethereal](https://ethereal.email/) for transactional emails during development (account confirmation and password recovery).
 Since Ethereal inboxes are generated dynamically per environment, users who only visit the deployed site would not be able to receive confirmation codes unless they run the project locally.
 
 Providing demo accounts allows reviewers to access the platform and test all core features without cloning the repository.
