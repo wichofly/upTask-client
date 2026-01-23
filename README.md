@@ -79,10 +79,6 @@ Since Ethereal inboxes are generated dynamically per environment, users who only
 
 Providing demo accounts allows reviewers to access the platform and test all core features without cloning the repository.
 
-Local Testing
-
-If you clone and run the project locally, you can register new users and view email previews directly in the backend logs via Ethereal.
-
 #### Local Testing
 
 If you clone and run the project locally, you can register new users and view email previews directly in the backend logs via Ethereal.
