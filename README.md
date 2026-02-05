@@ -99,7 +99,7 @@ New users can freely register with their own email addresses.
 
 ## Backend Integration
 
-This frontend is directly connected to the backend repository at: [UpTask Server](https://github.com/wichofly/upTask-server)
+This frontend is directly connected to the backend repository at: [UpTask Server Repository](https://github.com/wichofly/upTask-server)
 
 ## Deployment
 
