@@ -6,9 +6,9 @@ const AuthLayout = () => {
   return (
     <>
       <div className="bg-gray-800 min-h-screen">
-        <div className="py-10 lg:py-20 mx-auto w-[450px]">
+        <div className="mx-auto w-full max-w-md px-4 py-8 sm:px-6 lg:py-16">
           <Logo />
-          <div className="mt-10">
+          <div className="mt-8 sm:mt-10">
             <Outlet />
           </div>
         </div>

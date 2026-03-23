@@ -41,19 +41,19 @@ const RegisterView = () => {
 
   return (
     <>
-      <h1 className="text-5xl font-semibold text-white">Register</h1>
-      <p className="text-2xl font-light text-white mt-5">
+      <h1 className="text-4xl sm:text-5xl font-semibold text-white">Register</h1>
+      <p className="text-lg sm:text-2xl font-light text-white mt-4 sm:mt-5">
         Fill in the form to create{' '}
         <span className="text-fuchsia-500 font-semibold">your account</span>
       </p>
 
       <form
         onSubmit={handleSubmit(handleRegister)}
-        className="space-y-8 p-10 bg-white mt-10 rounded-md"
+        className="space-y-6 sm:space-y-8 p-5 sm:p-8 bg-white mt-8 sm:mt-10 rounded-md"
         noValidate
       >
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="font-normal text-2xl">
+          <label htmlFor="name" className="font-normal text-lg sm:text-2xl">
             Name
           </label>
           <input
@@ -69,7 +69,7 @@ const RegisterView = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="font-normal text-2xl">
+          <label htmlFor="email" className="font-normal text-lg sm:text-2xl">
             Email
           </label>
           <input
@@ -89,7 +89,10 @@ const RegisterView = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="password" className="font-normal text-2xl">
+          <label
+            htmlFor="password"
+            className="font-normal text-lg sm:text-2xl"
+          >
             Password
           </label>
           <input
@@ -111,7 +114,10 @@ const RegisterView = () => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="confirmPassword" className="font-normal text-2xl">
+          <label
+            htmlFor="confirmPassword"
+            className="font-normal text-lg sm:text-2xl"
+          >
             Confirm Password
           </label>
           <input
@@ -133,10 +139,10 @@ const RegisterView = () => {
         <input
           type="submit"
           value="Register"
-          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-semibold text-xl cursor-pointer rounded-md"
+          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-semibold text-lg sm:text-xl cursor-pointer rounded-md"
         />
 
-        <nav>
+        <nav className="text-sm sm:text-base">
           Already have an account?{' '}
           <Link
             to="/auth/login"
@@ -147,7 +153,7 @@ const RegisterView = () => {
         </nav>
       </form>
 
-      <nav className="mt-10 text-center text-xl text-gray-300 font-normal">
+      <nav className="mt-8 sm:mt-10 text-center text-base sm:text-xl text-gray-300 font-normal">
         Forgot your password?{' '}
         <Link
           to="/auth/forgot-password"
