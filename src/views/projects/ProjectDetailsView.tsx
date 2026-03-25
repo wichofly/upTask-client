@@ -30,16 +30,18 @@ const ProjectDetailsView = () => {
 
     return (
       <>
-        <h1 className="text-5xl font-semibold">{data.projectName}</h1>
-        <p className="text-2xl font-light text-gray-500 mt-5">
+        <h1 className="text-4xl sm:text-5xl font-semibold">
+          {data.projectName}
+        </h1>
+        <p className="text-lg sm:text-2xl font-light text-gray-500 mt-4 sm:mt-5">
           {data.description}
         </p>
 
         {canEdit && (
-          <nav className="my-5 flex gap-3">
+          <nav className="my-5 flex flex-col sm:flex-row gap-3">
             <button
               type="button"
-              className="bg-purple-500 hover:bg-purple-600 px-10 py-3 text-white text-xl font-semibold cursor-pointer transition-colors rounded-md"
+              className="w-full sm:w-auto bg-purple-500 hover:bg-purple-600 px-6 sm:px-10 py-3 text-white text-base sm:text-xl font-semibold cursor-pointer transition-colors rounded-md"
               onClick={() => navigate(location.pathname + '?newTask=true')}
             >
               Add Task
@@ -47,7 +49,7 @@ const ProjectDetailsView = () => {
 
             <Link
               to={'team'}
-              className="bg-fuchsia-500 hover:bg-fuchsia-600 px-10 py-3 text-white text-xl font-semibold cursor-pointer transition-colors rounded-md"
+              className="w-full sm:w-auto bg-fuchsia-500 hover:bg-fuchsia-600 px-6 sm:px-10 py-3 text-white text-base sm:text-xl font-semibold cursor-pointer transition-colors rounded-md text-center"
             >
               Collaborators
             </Link>

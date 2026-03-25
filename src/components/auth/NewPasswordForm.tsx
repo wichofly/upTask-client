@@ -49,11 +49,11 @@ export const NewPasswordForm = ({ token }: NewPasswordFormProps) => {
     <>
       <form
         onSubmit={handleSubmit(handleNewPassword)}
-        className="space-y-8 p-10 mt-10 bg-white rounded-md"
+        className="space-y-6 sm:space-y-8 p-5 sm:p-8 mt-8 sm:mt-10 bg-white rounded-md"
         noValidate
       >
         <div className="flex flex-col gap-2">
-          <label htmlFor="password" className="font-normal text-2xl">
+          <label htmlFor="password" className="font-normal text-lg sm:text-2xl">
             Password
           </label>
           <input
@@ -75,7 +75,10 @@ export const NewPasswordForm = ({ token }: NewPasswordFormProps) => {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="confirmPassword" className="font-normal text-2xl">
+          <label
+            htmlFor="confirmPassword"
+            className="font-normal text-lg sm:text-2xl"
+          >
             Confirm Password
           </label>
           <input
@@ -97,7 +100,7 @@ export const NewPasswordForm = ({ token }: NewPasswordFormProps) => {
         <input
           type="submit"
           value="Establish Password"
-          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-semibold text-xl cursor-pointer rounded-md"
+          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-semibold text-lg sm:text-xl cursor-pointer rounded-md"
         />
       </form>
     </>

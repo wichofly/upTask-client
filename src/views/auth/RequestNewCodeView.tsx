@@ -35,19 +35,19 @@ const RequestNewCodeView = () => {
 
   return (
     <>
-      <h1 className="text-5xl font-semibold text-white">Request New Code</h1>
-      <p className="text-2xl font-light text-white mt-5">
+      <h1 className="text-4xl sm:text-5xl font-semibold text-white">Request New Code</h1>
+      <p className="text-lg sm:text-2xl font-light text-white mt-4 sm:mt-5">
         Enter your <span className="text-fuchsia-500">email</span> to receive a
         <span className="text-fuchsia-500"> new confirmation code.</span>
       </p>
 
       <form
         onSubmit={handleSubmit(handleRequestCode)}
-        className="space-y-8 p-10 bg-white mt-10 rounded-md"
+        className="space-y-6 sm:space-y-8 p-5 sm:p-8 bg-white mt-8 sm:mt-10 rounded-md"
         noValidate
       >
         <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="font-normal text-2xl">
+          <label htmlFor="email" className="font-normal text-lg sm:text-2xl">
             Email
           </label>
           <input
@@ -69,20 +69,20 @@ const RequestNewCodeView = () => {
         <input
           type="submit"
           value="Send New Code"
-          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-semibold text-xl cursor-pointer rounded-md"
+          className="bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3 text-white font-semibold text-lg sm:text-xl cursor-pointer rounded-md"
         />
       </form>
 
-      <nav className="mt-10 flex flex-col space-y-4">
+      <nav className="mt-8 sm:mt-10 flex flex-col space-y-3 sm:space-y-4">
         <Link
           to="/auth/login"
-          className="text-center text-xl text-gray-300 font-normal hover:text-fuchsia-500 transition-colors duration-300"
+          className="text-center text-base sm:text-xl text-gray-300 font-normal hover:text-fuchsia-500 transition-colors duration-300"
         >
           Do you have an account? Login
         </Link>
         <Link
           to="/auth/forgot-password"
-          className="text-center text-xl text-gray-300 font-normal hover:text-fuchsia-500 transition-colors duration-300"
+          className="text-center text-base sm:text-xl text-gray-300 font-normal hover:text-fuchsia-500 transition-colors duration-300"
         >
           Forgot your password? Reset it
         </Link>

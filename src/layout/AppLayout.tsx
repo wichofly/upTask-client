@@ -17,7 +17,7 @@ const AppLayout = () => {
       <>
         <Header name={data.name} />
 
-        <section className="max-w-screen-2xl mx-auto mt-10 p-5">
+        <section className="max-w-screen-2xl mx-auto mt-6 sm:mt-10 px-4 sm:px-5">
           <Outlet />
         </section>
 

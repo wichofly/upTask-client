@@ -37,11 +37,11 @@ export const NewPasswordToken = ({
 
   return (
     <>
-      <form className="space-y-8 p-10 bg-white mt-10 rounded-md">
-        <label className="font-normal text-2xl text-center block">
+      <form className="space-y-6 sm:space-y-8 p-5 sm:p-8 bg-white mt-8 sm:mt-10 rounded-md">
+        <label className="font-normal text-lg sm:text-2xl text-center block">
           Enter confirmation code
         </label>
-        <div className="flex justify-center gap-5">
+        <div className="flex justify-center gap-2 sm:gap-5">
           <PinInput
             value={token}
             onChange={handleChange}
@@ -57,10 +57,10 @@ export const NewPasswordToken = ({
         </div>
       </form>
 
-      <nav className="mt-10 flex flex-col space-y-4">
+      <nav className="mt-8 sm:mt-10 flex flex-col space-y-3 sm:space-y-4">
         <Link
           to="/auth/forgot-password"
-          className="text-center text-xl text-gray-300 font-normal hover:text-fuchsia-500 transition-colors duration-300"
+          className="text-center text-base sm:text-xl text-gray-300 font-normal hover:text-fuchsia-500 transition-colors duration-300"
         >
           Request new code
         </Link>

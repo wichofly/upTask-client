@@ -9,8 +9,10 @@ const ResetPasswordView = () => {
 
   return (
     <>
-      <h1 className="text-5xl font-semibold text-white">Reset Password</h1>
-      <p className="text-2xl font-light text-white mt-5">
+      <h1 className="text-4xl sm:text-5xl font-semibold text-white">
+        Reset Password
+      </h1>
+      <p className="text-lg sm:text-2xl font-light text-white mt-4 sm:mt-5">
         Please enter the code received in your{' '}
         <span className="text-fuchsia-500 font-semibold">email</span>
       </p>

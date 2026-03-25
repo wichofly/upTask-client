@@ -35,14 +35,14 @@ const ChangePasswordView = () => {
   return (
     <>
       <div className="mx-auto max-w-3xl">
-        <h1 className="text-5xl font-black ">Change Password</h1>
-        <p className="text-2xl font-light text-gray-500 mt-5">
+        <h1 className="text-4xl sm:text-5xl font-black ">Change Password</h1>
+        <p className="text-lg sm:text-2xl font-light text-gray-500 mt-4 sm:mt-5">
           Change your account password here
         </p>
 
         <form
           onSubmit={handleSubmit(handleChangePassword)}
-          className=" mt-14 space-y-5 bg-white shadow-lg p-10 rounded-md"
+          className=" mt-10 sm:mt-14 space-y-5 bg-white shadow-lg p-5 sm:p-10 rounded-md"
           noValidate
         >
           <div className="mb-5 space-y-3">

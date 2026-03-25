@@ -20,14 +20,14 @@ const DashboardView = () => {
   if (data && user)
     return (
       <>
-        <h1 className="text-5xl font-semibold">My Projects</h1>
-        <p className="text-2xl font-light text-gray-500 mt-5">
+        <h1 className="text-4xl sm:text-5xl font-semibold">My Projects</h1>
+        <p className="text-lg sm:text-2xl font-light text-gray-500 mt-4 sm:mt-5">
           Manage and track your projects efficiently.
         </p>
 
         <Link
           to="/projects/create"
-          className="text-white bg-purple-400 hover:bg-purple-500 px-10 py-3 text-xl font-semibold rounded-md my-5 inline-block transition-colors"
+          className="text-white bg-purple-400 hover:bg-purple-500 px-6 sm:px-10 py-3 text-base sm:text-xl font-semibold rounded-md my-5 inline-block transition-colors"
         >
           Create New Project
         </Link>
@@ -35,7 +35,7 @@ const DashboardView = () => {
         {data.length ? (
           <ProjectsCreated projects={data} user={user._id} />
         ) : (
-          <p className="text-center py-20 font-semibold text-2xl">
+          <p className="text-center py-16 sm:py-20 font-semibold text-lg sm:text-2xl">
             There are not projects.{' '}
             <Link
               to="/projects/create"
