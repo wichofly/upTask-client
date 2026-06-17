@@ -1,10 +1,10 @@
-import { type Dispatch, type SetStateAction } from 'react';
-import { useMutation } from '@tanstack/react-query';
 import { PinInput, PinInputField } from '@chakra-ui/pin-input';
-import { toast } from 'react-toastify';
-import type { ConfirmToken } from '../../types';
-import { validateToken } from '../../api/AuthAPI';
+import { useMutation } from '@tanstack/react-query';
+import { type Dispatch, type SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { validateToken } from '../../api/AuthAPI';
+import type { ConfirmToken } from '../../types';
 
 type NewPasswordTokenProps = {
   token: ConfirmToken['token'];

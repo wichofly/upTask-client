@@ -17,7 +17,7 @@ export const createNote = async ({
   try {
     const { data } = await api.post<string>(
       `/projects/${projectId}/tasks/${taskId}/notes`,
-      formData
+      formData,
     );
     return data;
   } catch (error) {
@@ -34,7 +34,7 @@ export const deleteNote = async ({
 }: Pick<NoteAPIType, 'projectId' | 'taskId' | 'noteId'>) => {
   try {
     const { data } = await api.delete<string>(
-      `/projects/${projectId}/tasks/${taskId}/notes/${noteId}`
+      `/projects/${projectId}/tasks/${taskId}/notes/${noteId}`,
     );
     return data;
   } catch (error) {

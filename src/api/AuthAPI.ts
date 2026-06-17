@@ -89,7 +89,7 @@ export const updatePasswordWithToken = async ({
   try {
     const { data } = await api.post<string>(
       `/auth/update-password/${token}`,
-      formData
+      formData,
     );
     return data;
   } catch (error) {

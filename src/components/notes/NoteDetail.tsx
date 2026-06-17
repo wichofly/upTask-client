@@ -1,10 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useLocation, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { deleteNote } from '../../api/NoteAPI';
 import { useAuth } from '../../hooks/useAuth';
 import type { Note } from '../../types';
 import { formatData } from '../../utils/utils';
-import { deleteNote } from '../../api/NoteAPI';
-import { toast } from 'react-toastify';
-import { useLocation, useParams } from 'react-router-dom';
 
 type NoteDetailProps = {
   note: Note;

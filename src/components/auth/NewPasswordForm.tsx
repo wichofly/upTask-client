@@ -1,10 +1,10 @@
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { updatePasswordWithToken } from '../../api/AuthAPI';
 import type { ConfirmToken, ResetPasswordForm } from '../../types';
 import { ErrorMessage } from '../ErrorMessage';
-import { updatePasswordWithToken } from '../../api/AuthAPI';
 
 type NewPasswordFormProps = {
   token: ConfirmToken['token'];
