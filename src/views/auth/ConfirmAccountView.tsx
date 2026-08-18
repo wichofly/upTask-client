@@ -1,10 +1,10 @@
+import { PinInput, PinInputField } from '@chakra-ui/pin-input';
+import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import { PinInput, PinInputField } from '@chakra-ui/pin-input';
-import type { ConfirmToken } from '../../types';
 import { confirmAccount } from '../../api/AuthAPI';
+import type { ConfirmToken } from '../../types';
 
 const ConfirmAccountView = () => {
   const [token, setToken] = useState<ConfirmToken['token']>('');

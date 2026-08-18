@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AppRoutes from './routes/AppRoutes';
 import AuthRoutes from './routes/AuthRoutes';
 

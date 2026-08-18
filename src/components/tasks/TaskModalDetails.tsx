@@ -1,4 +1,3 @@
-import { Fragment, type ChangeEvent } from 'react';
 import {
   Dialog,
   DialogPanel,
@@ -6,18 +5,19 @@ import {
   Transition,
   TransitionChild,
 } from '@headlessui/react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { Fragment, type ChangeEvent } from 'react';
 import {
   Navigate,
   useLocation,
   useNavigate,
   useParams,
 } from 'react-router-dom';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { getTaskById, updateStatus } from '../../api/TaskAPI';
 import { toast } from 'react-toastify';
-import { formatData } from '../../utils/utils';
+import { getTaskById, updateStatus } from '../../api/TaskAPI';
 import { statusTexts } from '../../locales/status';
 import type { TaskStatus } from '../../types';
+import { formatData } from '../../utils/utils';
 import { NotesPanel } from '../notes/NotesPanel';
 
 export default function TaskModalDetails() {

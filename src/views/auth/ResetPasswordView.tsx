@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { NewPasswordToken } from '../../components/auth/NewPasswordToken';
 import { NewPasswordForm } from '../../components/auth/NewPasswordForm';
+import { NewPasswordToken } from '../../components/auth/NewPasswordToken';
 import type { ConfirmToken } from '../../types';
 
 const ResetPasswordView = () => {

@@ -1,7 +1,7 @@
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
-import { AddMemberModal } from '../../components/team/AddMemberModal';
 import { useQuery } from '@tanstack/react-query';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { getProjectTeam } from '../../api/TeamAPI';
+import { AddMemberModal } from '../../components/team/AddMemberModal';
 import { ProjectTeamMembers } from '../../components/team/ProjectTeamMembers';
 
 const ProjectTeamView = () => {

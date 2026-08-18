@@ -1,12 +1,12 @@
 import { DndContext, type DragEndEvent } from '@dnd-kit/core';
-import type { Project, TaskProject, TaskStatus } from '../../types';
-import { TaskCard } from './TaskCard';
-import { statusTexts } from '../../locales/status';
-import { DropTask } from './DropTask';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { updateStatus } from '../../api/TaskAPI';
+import { statusTexts } from '../../locales/status';
+import type { Project, TaskProject, TaskStatus } from '../../types';
+import { DropTask } from './DropTask';
+import { TaskCard } from './TaskCard';
 
 type TaskListProps = {
   tasks: TaskProject[];

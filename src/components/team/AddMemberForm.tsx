@@ -1,9 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
-import { ErrorMessage } from '../ErrorMessage';
-import type { TeamMemberForm } from '../../types';
 import { findUserByEmail } from '../../api/TeamAPI';
+import type { TeamMemberForm } from '../../types';
+import { ErrorMessage } from '../ErrorMessage';
 import { SearchResult } from './SearchResult';
 
 export const AddMemberForm = () => {

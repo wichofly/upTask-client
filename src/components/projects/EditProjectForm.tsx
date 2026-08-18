@@ -1,10 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom';
-import ProjectForm from './ProjectForm';
-import type { Project, ProjectFormData } from '../../types';
-import { useForm } from 'react-hook-form';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { updateProject } from '../../api/ProjectAPI';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { updateProject } from '../../api/ProjectAPI';
+import type { Project, ProjectFormData } from '../../types';
+import ProjectForm from './ProjectForm';
 
 type EditProjectFormProps = {
   data: ProjectFormData;

@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import {
   Dialog,
   DialogPanel,
@@ -6,13 +5,14 @@ import {
   Transition,
   TransitionChild,
 } from '@headlessui/react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import type { Task, TaskFormData } from '../../types';
-import { useForm } from 'react-hook-form';
-import TaskForm from './TaskForm';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { updateTask } from '../../api/TaskAPI';
+import { Fragment } from 'react';
+import { useForm } from 'react-hook-form';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { updateTask } from '../../api/TaskAPI';
+import type { Task, TaskFormData } from '../../types';
+import TaskForm from './TaskForm';
 
 type EditTaskModalProps = {
   data: Task;

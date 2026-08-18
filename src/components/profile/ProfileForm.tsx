@@ -1,9 +1,9 @@
-import { useForm } from 'react-hook-form';
-import { ErrorMessage } from '../ErrorMessage';
-import type { User, UserProfileForm } from '../../types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { updateProfile } from '../../api/ProfileAPI';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { updateProfile } from '../../api/ProfileAPI';
+import type { User, UserProfileForm } from '../../types';
+import { ErrorMessage } from '../ErrorMessage';
 
 type ProfileFormData = {
   data: User;

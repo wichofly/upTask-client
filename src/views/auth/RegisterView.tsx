@@ -1,10 +1,10 @@
+import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import type { UserRegistrationForm } from '../../types';
-import { ErrorMessage } from '../../components/ErrorMessage';
 import { createAccount } from '../../api/AuthAPI';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import type { UserRegistrationForm } from '../../types';
 
 const RegisterView = () => {
   const initialValues: UserRegistrationForm = {

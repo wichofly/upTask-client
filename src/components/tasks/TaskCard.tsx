@@ -1,4 +1,4 @@
-import { Fragment } from 'react/jsx-runtime';
+import { useDraggable } from '@dnd-kit/core';
 import {
   Menu,
   MenuButton,
@@ -7,12 +7,12 @@ import {
   Transition,
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
-import type { TaskProject } from '../../types';
-import { useNavigate, useParams } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteTask } from '../../api/TaskAPI';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useDraggable } from '@dnd-kit/core';
+import { Fragment } from 'react/jsx-runtime';
+import { deleteTask } from '../../api/TaskAPI';
+import type { TaskProject } from '../../types';
 
 type TaskCardProps = {
   task: TaskProject;

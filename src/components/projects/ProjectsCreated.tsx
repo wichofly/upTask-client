@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Menu,
   MenuButton,
@@ -8,6 +6,8 @@ import {
   Transition,
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
+import { Fragment } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import type { DashboardProject, Project } from '../../types';
 import { isManager } from '../../utils/policies';
 import { DeleteProjectModal } from './DeleteProjectModal';
@@ -102,7 +102,7 @@ export const ProjectsCreated = ({ projects, user }: ProjectsCreatedProps) => {
                             onClick={() => {
                               navigate(
                                 location.pathname +
-                                  `?deleteProject=${project._id}`
+                                  `?deleteProject=${project._id}`,
                               );
                             }}
                           >

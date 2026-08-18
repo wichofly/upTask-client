@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { toast } from 'react-toastify';
-import type { TeamMember } from '../../types';
-import { addUserToProject } from '../../api/TeamAPI';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { addUserToProject } from '../../api/TeamAPI';
+import type { TeamMember } from '../../types';
 
 type SearchResultProps = {
   user: TeamMember;

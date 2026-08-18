@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import {
   Menu,
   MenuButton,
@@ -7,10 +6,11 @@ import {
   Transition,
 } from '@headlessui/react';
 import { EllipsisVerticalIcon } from '@heroicons/react/20/solid';
-import type { Project, User } from '../../types';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { removeMemberFromProject } from '../../api/TeamAPI';
+import { Fragment } from 'react';
 import { toast } from 'react-toastify';
+import { removeMemberFromProject } from '../../api/TeamAPI';
+import type { Project, User } from '../../types';
 
 type ProjectTeamMembersProps = {
   team: User[];

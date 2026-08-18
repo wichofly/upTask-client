@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import {
   Dialog,
   DialogPanel,
@@ -6,14 +5,15 @@ import {
   Transition,
   TransitionChild,
 } from '@headlessui/react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Fragment } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ErrorMessage } from '../ErrorMessage';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
-import type { CheckPasswordForm } from '../../types';
 import { checkPassword } from '../../api/AuthAPI';
 import { deleteProject } from '../../api/ProjectAPI';
+import type { CheckPasswordForm } from '../../types';
+import { ErrorMessage } from '../ErrorMessage';
 
 export const DeleteProjectModal = () => {
   const initialValues = {

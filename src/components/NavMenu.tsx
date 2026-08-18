@@ -1,14 +1,14 @@
-import { Fragment } from 'react';
 import {
-  Popover,
-  PopoverButton,
-  PopoverPanel,
-  Transition,
+    Popover,
+    PopoverButton,
+    PopoverPanel,
+    Transition,
 } from '@headlessui/react';
 import { Bars3Icon } from '@heroicons/react/20/solid';
+import { useQueryClient } from '@tanstack/react-query';
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import type { User } from '../types';
-import { useQueryClient } from '@tanstack/react-query';
 
 type NavMenuProps = {
   name: User['name'];

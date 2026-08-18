@@ -1,10 +1,10 @@
-import { useForm } from 'react-hook-form';
-import type { RequestNewCodeForm } from '../../types';
-import { ErrorMessage } from '../../components/ErrorMessage';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
-import { requestConfirmationCode } from '../../api/AuthAPI';
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { requestConfirmationCode } from '../../api/AuthAPI';
+import { ErrorMessage } from '../../components/ErrorMessage';
+import type { RequestNewCodeForm } from '../../types';
 
 const RequestNewCodeView = () => {
   const initialValues: RequestNewCodeForm = {
