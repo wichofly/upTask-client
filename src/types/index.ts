@@ -82,12 +82,12 @@ export const TaskSchema = z.object({
       _id: z.string(),
       user: userSchema,
       status: taskStatusSchema,
-    })
+    }),
   ),
   notes: z.array(
     noteSchema.extend({
       createdBy: userSchema,
-    })
+    }),
   ),
   createdAt: z.string(),
   updatedAt: z.string(),
@@ -128,7 +128,7 @@ export const dashboardProjectSchema = z.array(
     clientName: true,
     description: true,
     manager: true,
-  })
+  }),
 );
 
 // Schema for editing a Project
