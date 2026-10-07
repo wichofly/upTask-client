@@ -1,11 +1,11 @@
 import { isAxiosError } from 'axios';
 import api from '../lib/axios';
 import {
-  dashboardProjectSchema,
-  editProjectSchema,
-  ProjectSchema,
-  type Project,
-  type ProjectFormData,
+    dashboardProjectSchema,
+    editProjectSchema,
+    ProjectSchema,
+    type Project,
+    type ProjectFormData,
 } from '../types';
 
 export const createProject = async (formData: ProjectFormData) => {
